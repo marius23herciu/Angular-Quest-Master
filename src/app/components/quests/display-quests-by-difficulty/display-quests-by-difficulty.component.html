@@ -1,0 +1,68 @@
+<body class="body">
+<div class="container mb-5" >
+    <br>
+    <p>Change Difficulty:</p>
+    <div class="label"> <select  [(ngModel)]="difficulty" (ngModelChange)="getQuestsByDifficulty(difficulty)" class="form-control"  id="difficulty" placeholder="Select category"
+        name="difficulty">
+ <option *ngFor="let difficulty of difficulties" [value]="difficulty">{{difficulty}}</option>
+</select>
+</div>
+<p>Select Category:</p>
+    <div class="label"> <select [(ngModel)]="category" (ngModelChange)="getQuestsByCategoryAndDifficulty(category, difficulty)" class="form-control"  id="category" placeholder="Select category"
+        name="categories">
+ <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+</select></div>
+
+<div class="container my-5">
+    <h1 class="mb=100 styled" *ngIf="!filterSwitch||!filtered" >Quests</h1>
+    <h1 class="mb=100 styled"  *ngIf="difficulty!='' && filterSwitch&&filtered">Difficulty {{difficulty}}</h1>
+    <h1 class="mb=100 styled"  *ngIf="difficulty=='' && filterSwitch&&filtered">D</h1>
+  <p> Quests on page:</p>
+  <div>
+      <select (change)="onTableSizeChange($event)">
+       <option *ngFor="let size of tableSizes">
+        {{size}}
+       </option>
+      </select>
+  </div>
+    <table class="table" *ngIf="quests && quests.length > 0">
+       
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Category</th>
+            <th scope="col">Difficulty</th>
+            <th scope="col">Title</th>
+            <th scope="col">Total Attempts</th>
+            <th scope="col">Rate of Success</th>
+            <th scope="col">Users Rating</th>
+            <th scope="col"> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let quest of quests | paginate:{
+            itemsPerPage: tableSize,
+            currentPage: page,
+            totalItems: count
+          } let i =  index">
+            <td>{{(tableSize*page)-tableSize+i+1}}</td>
+            <td>{{quest.category}}</td>
+            <td>{{quest.difficulty}}</td>
+            <td>{{quest.title}}</td>
+            <td>{{quest.totalAttempts}}</td>
+            <td>{{quest.rateOfSuccess}}%</td>
+            <td>{{quest.usersRating}}⭐ </td>
+            <td><button (click)="openDialog(quest.id)" type="button" class="button">Show quiz</button></td>
+            
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <pagination-controls 
+        previousLabel="Prev"
+        nextLabel="Next"
+        (pageChange)="onTableDataChange($event,difficulty)">
+        </pagination-controls>
+      </div>
+      <p *ngIf="!quests || quests.length==0">No quests found.</p>
+</div>

@@ -1,0 +1,77 @@
+.body
+{
+    margin-top: -650px;
+}
+
+.button {
+    display: inline-block;
+    position:absolute; 
+    right:30%;
+    bottom:7%;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #586eed;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+  }
+  
+  .button:hover {background-color:#5891ed}
+  
+  .button:active {
+    background-color: #3e4a8e;
+    box-shadow: 0 5px #18315b;
+    transform: translateY(4px);
+  }
+  .center {
+    margin: auto;
+    text-align: center;
+    font-size: 0px;
+    width: 35%;
+    border: 5px solid rgb(11, 0, 128);
+    border-radius: 20%;
+    padding: 5px;
+}
+
+
+
+
+
+#leftbox {
+    float:left;
+    border-radius: 25px;
+    padding: 20px;
+    background:rgba(255, 0, 0, 0.4);
+    width:33%;
+    height:375px;
+    position:relative;
+}
+
+#middlebox{
+    float:left;
+    border-radius: 25px;
+    padding: 20px;
+    background:rgba(14, 249, 14, 0.4);
+    width:33%;
+    height:375px;
+    margin-left: 5px;
+    position:relative;
+}
+#rightbox{
+    float:right;
+    border-radius: 25px;
+    padding: 20px;
+    background:rgba(0, 0, 255, 0.4);
+    width:33%;
+    height:375px;
+    position:relative;
+}
+h1{
+    color:rgb(0, 0, 0);
+    text-align:center;
+}

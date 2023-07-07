@@ -1,0 +1,32 @@
+
+<body>
+    <ul>
+      <li><a class="active" href="#">Quiz Master</a></li>
+      <li  *ngIf="!(auth.isAuthenticated$ | async) ; else authLinks">
+        <a   routerLink="login">
+            Login/Register</a>
+      </li>
+      <ng-template #authLinks>
+        <li>
+          <a routerLink="/quests-main" routerLinkActive="text-indigo-400">Quizzes</a>
+        </li> 
+        <li>
+          <a routerLink="/create-quiz" routerLinkActive="text-indigo-400">Create Quiz</a>
+        </li> 
+        <li>
+            <a routerLink="/users" routerLinkActive="text-indigo-400">Users Ranking</a>
+        </li> 
+        <li>
+            <a routerLink="/active-users" routerLinkActive="text-indigo-400">Most Active Users</a>
+        </li> 
+        <li>
+            <a [routerLink]="['users-info/', userName]" style="float:right" routerLinkActive="text-indigo-400">Account Info</a>
+        </li>
+        
+      
+        <button type="button" class="logoutButton"  style="float:right" (click)="auth.logout()">Logout</button>
+      </ng-template>
+    </ul>
+    </body>
+  
+  

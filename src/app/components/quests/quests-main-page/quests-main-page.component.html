@@ -1,0 +1,27 @@
+<body class="body">
+   
+<div class="container mb-5">
+    <br>
+    <p>Quizzes classified by:</p>
+<div class="label">
+    <select [(ngModel)]="sortBy" (ngModelChange)="filterFunction(sortBy)" class="form-control"  id="clasification" placeholder="Select clasification"
+             name="clasification">
+      <option *ngFor="let clas of clasification" [value]="clas" >{{clas}}</option>
+    </select>
+</div></div>
+
+  <div class="container mb-5">
+    <h1 class="mb=100 styled" *ngIf="filtered"  >Select {{sortBy}}</h1>
+    <h1 class="mb=100 styled" *ngIf="!filtered"  >Select Category</h1>
+    <div *ngIf="sortBy==='Category'||sortBy==='Difficulty'||sortBy===''" >
+        <button  (click)="goToFunction(categ)" type="button" class="button" *ngFor="let categ of sorted">
+            <i [class]="categ" >{{ categ }}</i>
+          </button>
+    </div>
+    <div *ngIf="sortBy==='Other'">
+        <button  (click)="goToOtherFunction(categ)" type="button" class="button" *ngFor="let categ of sorted">
+            <i [class]="categ" >{{ categ }}</i>
+          </button>
+    </div>
+</div>
+</body>

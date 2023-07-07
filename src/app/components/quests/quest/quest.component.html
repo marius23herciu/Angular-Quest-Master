@@ -1,0 +1,56 @@
+<body class="mat-dialog-container" #body>
+    <li class="close" type="submit"  mat-dialog-close  mat-button (click)="onClose()"></li>
+    <div  class="center">
+    <dialog class="dialog"  #dialog>
+            <div *ngIf="correctAnswer&&answered"><h5 class="text-question">Correct!<br>
+                You won {{points}} points!</h5></div>
+            <div *ngIf="!correctAnswer&&answered"><h5 class="text-question">Wrong aswer.</h5></div>
+            <button class="dialogButton" (click)="dialog.close()">Close</button>
+    </dialog>
+    <dialog class="rate"  #rate>
+        <h3 class="text-question" >Your Rating</h3>
+        <div class="rating">
+            <ng-container  *ngFor="let star of stars">
+                <i class="fa-solid fa-star" (click)="updateRating(star)" [ngClass]="{'active': star<=rating}"></i>
+            </ng-container>
+        </div>
+        <div class="rateButtonsDiv">
+            <button class="dialogButton" (click)="rate.close()">Close</button>
+            <button class="dialogButton" (click)="rateQ(rating)" (click)="rate.close()">Rate</button>
+        </div>
+    </dialog>
+    <h1  class="title" >{{quest.title}}</h1>
+    <br>
+    <h5 class="text-question">{{quest.question}}</h5>
+    <div *ngIf="quest.image!=''" ><img  width="auto" height="200" src = {{quest.image}} /> </div>
+    <div *ngIf="quest.video!=''"><iframe width="200" height="auto" object-fit = "cover"
+        id="videoIframe" [src]='' frameborder="0" allowfullscreen>
+        </iframe></div>
+    <div *ngIf="quest.audio!=''"><iframe width="200" height="auto"
+        id="audioIframe" [src]='' frameborder="0" allowfullscreen>
+            </iframe></div>
+    <button type="button" class="optionButton" [disabled]="!quest.allowedToSolve" (click)="selectAnswer(quest.option1)">{{quest.option1}}</button>
+    <button type="button" class="optionButton" [disabled]="!quest.allowedToSolve" (click)="selectAnswer(quest.option2)">{{quest.option2}}</button>
+    <button type="button" class="optionButton" [disabled]="!quest.allowedToSolve" (click)="selectAnswer(quest.option3)">{{quest.option3}}</button>
+    <br><br>
+    <div *ngIf="quest.createdByActiveUser" class="alert alert-danger">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <p>You created this quiz. You are not allowed to solve it.</p></div>
+    <div *ngIf="!quest.allowedToSolve&&!quest.createdByActiveUser" class="alert alert-danger">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <p>You allready solved this quiz.</p></div>
+    <div *ngIf="!answered">
+        <button class="answerButton" *ngIf="quest.allowedToSolve" type="button" [disabled]="!optionSelected" (click)="resolveQuest(this.questId, this.user.id, selectedAnswer)"
+        (click)="dialog.showModal()">Answer</button>
+    </div>
+    <div *ngIf="randomQuest">
+        <button class="answerButton" type="button"  mat-dialog-close  mat-button (click)="onClose()">Next Quiz</button>
+    </div>
+    <div *ngIf="!rated">
+        <button class="answerButton" *ngIf="!quest.createdByActiveUser&&!quest.allreadyRated" style="float:right" type="button" 
+        (click)="rate.showModal()">Rate Quest</button>
+    <br>
+    </div>
+    </div>
+    
+</body>

@@ -1,0 +1,236 @@
+
+.center {
+    margin: auto;
+    text-align: center;
+    font-size: 40px;
+    margin-top:2%;
+    width: 90%;
+    border: 6px solid rgb(11, 0, 128);
+    border-radius: 5%;
+    border-style: inset;
+    padding: 25px;
+}
+.title {
+  margin: auto;
+  text-align: center;
+  font-size: 35px;
+  margin-top:0%;
+  width: 50%;
+  border: 6px solid rgb(11, 0, 128);
+  border-radius: 25%;
+  border-style: inset;
+  padding: 8px;
+}
+.text-question {
+    margin: auto;
+    text-align: center;
+    font-size: 25px;
+    margin-top:0%;
+    margin-bottom: 5%;
+}
+
+.dialog {
+    background-color: rgba(32, 82, 221, 0.914);
+    color: rgb(255, 255, 255);
+    border-color: transparent;
+    overflow: hidden;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 20px 8px #d0d0d0;
+    height: 170px;
+    width: 300px;
+ }
+ .rate {
+    background-color: rgba(32, 82, 221, 0.914);
+    color: rgb(255, 255, 255);
+    border-color: transparent;
+    overflow: hidden;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 20px 8px #d0d0d0;
+    height: 250px;
+    width: 300px;
+ }
+ 
+.rating{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 40px;
+}
+
+i{
+    color: rgba(255, 255, 255, 0.575); 
+    cursor: pointer;
+}
+.active {
+    color: orange;
+}
+.rateButtonsDiv {
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+.answerButton {
+    background-color: #34e1ff;
+    border: none;
+    color: rgb(0, 0, 0);
+    height: 50px;
+    width: 180px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 10%;
+  }
+  .answerButton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
+  .answerButton:disabled,
+  button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cad7eb;
+  color: #666666;
+}
+  .dialogButton {
+    background-color:#b0bafb;
+    border: none;
+    color: rgb(9, 3, 3);
+    height: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 10%;
+  }
+
+  .optionButton {
+    background-color: #586eed;
+    border: none;
+    color: white;
+    height: 40px;
+    width: 450px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 10%;
+  }
+  .optionButton:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
+  .optionButton:disabled,
+  button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cad7eb;
+  color: #666666;
+}
+.optionButton:focus {
+    background: #0b0384;
+    outline: none;
+    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+       -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+            box-shadow: inset 0px 0px 5px #c1c1c1;
+  }
+
+  .checked {
+    color: orange;
+  }
+
+
+  .mat-dialog-container {
+    display: block;
+    padding: 10px;
+    border-radius: 20px;
+    border-style: double;
+    box-sizing: border-box;
+    overflow: auto;
+    outline: 0;
+    margin: auto;
+    width: auto;
+    height: 90vh;
+    background:url('/assets/img/background-gradient-lights3.png')no-repeat center center fixed; 
+  -webkit-background-size:cover;
+  -o-background-size:cover;
+  -moz-background-size:cover;
+  background-size:cover;
+    min-height: inherit;
+    max-height: inherit;
+}
+.close {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: #333;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
+
+
+
+
+
+.alert {
+  height: 50px;
+  width: 600px;
+  font-size: 20px;
+  margin: auto;
+  padding: 2px;
+  background-color: #588ef2;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}

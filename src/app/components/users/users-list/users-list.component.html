@@ -1,0 +1,83 @@
+<body class="body">
+    
+  <div class="container my-5" *ngIf="!filterSwitch"> 
+    <button type="button" class="button" *ngIf="!filterSwitch" (click)="getUsersAlphabetically()">Alphabetical order</button>
+    <button type="button" class="button" *ngIf="!filterSwitch" (click)="getAllUsersByRank()">Ranking order</button>
+  <button type="button" class="filterButton"  style="float:right" (click)="toggle()">More filter options</button>
+  </div>
+ 
+  <div class="container my-5" *ngIf="filterSwitch">
+    <h2>Select department and/or category for ranking users:</h2>
+    <form #depCatForm="ngForm" (ngSubmit)="getAllUsersByDepartmentAndCategory(depCatForm)">
+        <li>Department</li>
+        <select  [(ngModel)]="department" (ngModelChange)="filterFunction(depCatForm)" class="form-control"  id="department" placeholder="Select department"
+                         name="department">
+                    <option *ngFor="let dep of departments" [value]="dep">{{dep}}</option>
+        </select>
+        <li>Category</li>
+        <select [(ngModel)]="category" (ngModelChange)="filterFunction(depCatForm)" class="form-control"  id="category" placeholder="Select category"
+                   name="categories">
+            <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+        </select>
+      </form>  
+</div>
+
+
+
+<div class="container my-5">
+    <h1 class="mb=100 styled" *ngIf="!filterSwitch||!filtered" >Users</h1>
+    <h1 class="mb=100 styled"  *ngIf="department!=''&&category!='' && filterSwitch&&filtered">Users from {{department}} by {{category}}</h1>
+    <h1 class="mb=100 styled"  *ngIf="department!=''&&category=='' && filterSwitch&&filtered">Users from {{department}} by all categories.</h1>
+    <h1 class="mb=100 styled"  *ngIf="department==''&&category!='' && filterSwitch&&filtered">Users from all departments by {{category}}</h1>
+    <h1 class="mb=100 styled"  *ngIf="department==''&&category=='' && filterSwitch&&filtered">Users</h1>
+  <p> Users on page:</p>
+  <div>
+      <select (change)="onTableSizeChange($event)">
+       <option *ngFor="let size of tableSizes">
+        {{size}}
+       </option>
+      </select>
+  </div>
+    <table class="table" *ngIf="users && users.length > 0">
+       
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Department</th>
+            <th scope="col">Quests Attempts</th>
+            <th scope="col">Rank</th>
+            <th scope="col">Points</th>
+            <th scope="col"> </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users | paginate:{
+            itemsPerPage: tableSize,
+            currentPage: page,
+            totalItems: count
+          } let i =  index">
+            <td>{{(tableSize*page)-tableSize+i+1}}</td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.department}}</td>
+            <td>{{user.totalQuestsAttempts}}</td>
+            <td>{{user.rank}}</td>
+            <td>{{user.points}}</td>
+            
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <pagination-controls 
+        previousLabel="Prev"
+        nextLabel="Next"
+        (pageChange)="onTableDataChange($event,department,category)">
+        </pagination-controls>
+      </div>
+      <p *ngIf="!users || users.length==0">No users found.</p>
+</div>
+
+
+</body>

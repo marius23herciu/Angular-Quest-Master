@@ -1,0 +1,51 @@
+<body class="body">
+  
+<div class="container my-5">
+  <h1 class="mb=100 styled" >{{this.userName}}'s details</h1>
+<table class="table">
+  <tbody>
+    <tr>
+      <th scope="row">First Name</th>
+      <td>{{user.firstName}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Last Name</th>
+      <td>{{user.lastName}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Email</th>
+      <td>{{user.email}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Department</th>
+      <td>{{user.department}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Quests Attempts</th>
+      <td>{{user.totalQuestsAttempts}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Badges</th>
+      <td *ngIf="user.badges.length>0">{{user.badges}}</td>
+      <td *ngIf="user.badges.length<=0">You have't earned any badges yet.</td>
+    </tr>
+    <tr>
+      <th scope="row">Rank</th>
+      <td>{{user.rank}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Points</th>
+      <td>{{user.points}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Your quizzes</th>
+      <td *ngIf="quests==0">You have't created any quizzes yet.</td>
+      <td *ngIf="quests>0">You created {{quests}} quizzes. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <button type="button" class="tableButton" [routerLink]="['/created-quizzes/']">Go to your quizzes</button></td>
+    </tr>
+  </tbody>
+</table>
+<button type="button" class="button" [routerLink]="['/edit-user/', this.userName]">Edit</button>
+</div>
+
+
+</body>

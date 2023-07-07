@@ -1,0 +1,75 @@
+
+.button {
+    background-color: #586eed;
+    border: none;
+    color: white;
+    height: 50px;
+    width: 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 10%;
+  }
+  .filterButton {
+    background-color:#2b41b9;
+    border: none;
+    color: white;
+    height: 30px;
+    width: 250px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 10%;
+  }
+  .button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
+  .button:disabled,
+  button[disabled]{
+  border: 1px solid #999999;
+  background-color: #ea6e0983;
+  color: #666666;
+}
+.tableButton {
+  background-color:#2b41b9;
+  border: none;
+  color: white;
+  height: 30px;
+  width: 250px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  border-radius: 10%;
+}
+
+.styled {
+    background: #0972ea56;
+    width:900px;
+    height: 40px;
+    border-radius: 10px;
+    text-align: left;
+    margin-top: -10px;
+    margin-bottom: 20px;
+  }
+
+.body
+{
+    margin-top: -675px;
+    
+}

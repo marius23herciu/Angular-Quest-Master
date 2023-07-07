@@ -1,0 +1,47 @@
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+  }
+  
+  li {
+    float: left;
+    border-right:1px solid #bbb;
+  }
+  
+  li:last-child {
+    border-right: none;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover:not(.active) {
+    background-color:  #586eed;
+  }
+  
+  .active {
+    background-color: #586eed;
+  }
+  
+  .logoutButton{
+      height:52px;
+      width:100px;
+      color: white;
+      background-color: #333  ;
+  }
+  .asd:hover() {
+      background-color: #111111 ;
+    }
+    .logoutButton:hover {
+      background-color: #ea4509;
+    }
+  

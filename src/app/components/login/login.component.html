@@ -1,0 +1,28 @@
+<body class="body">
+<div class="container">
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+    <br/>
+    <h2 class="form-signin-heading">Login</h2>
+      <div *ngIf="succesfullRegister" class="alert alert-success">Successful registration!</div>
+      <div *ngIf="loginDetails.invalidLogin" class="alert alert-danger">Invalid username or password.</div>
+      <p>Username:</p>
+      <div class="label"><label for="username" class="sr-only">Username</label>
+      <input type="text" id="username" name="username" [(ngModel)]="credentials.username" 
+      class="form-control" placeholder="Username" required></div>
+      <br/>
+      <br/>
+      <p>Password:</p>
+      <div class="label"><label for="password" class="sr-only">Password</label>
+      <input type="password" id="password" name="password" [(ngModel)]="credentials.password" 
+      class="form-control" placeholder="Password" required></div>
+      <br/>
+      <br>
+      <button class="button" type="submit" [disabled]="!loginForm.valid||loginDetails.inSubmision">Login</button>
+  </form>
+</div>
+<br/>
+<div class="container">
+  <p>Don't have an account?</p>
+    <button class="button" type="submit" (click)="router.navigate(['/register']);">Register</button>
+</div>
+</body>

@@ -1,0 +1,119 @@
+<body *ngIf="categories.length>0 && fail || !quizCreated" class="body">
+       
+    <div class="container my-5">
+        <h1 class="mb-3 styled">Create Quiz</h1>
+        <div *ngIf="categories.length>0" class="alert alert-danger">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            <p>Create your own quiz. It will cost you 100 points for a quiz, and you will get back 10 points for every fifth attempt by other users to solve it.</p></div>
+        <div class="row">
+            <div class="col-6">
+    
+                <form *ngIf="categories.length>0" #form="ngForm" (ngSubmit)="createQuiz()" >
+                    <p>Select Category:</p>
+                    <div class="label"><label for="category" class="sr-only">First Name</label>
+                        <select class="form-control"  id="category" placeholder="Enter category"
+                        [(ngModel)]="questToCreate.category" name="category">
+                  <option *ngFor="let categ of categories" [value]="categ">{{categ}}</option>
+                </select></div>
+                <br>
+                        <p>Select Difficulty:</p>
+                        <div class="label"><label for="difficulty" class="sr-only">First Name</label>
+                            <select class="form-control"  id="difficulty" placeholder="Enter difficulty"
+                            [(ngModel)]="questToCreate.difficulty" name="difficulty">
+                      <option *ngFor="let dif of difficulties" [value]="dif">{{dif}}</option>
+                    </select></div>
+                    <br>
+                    <p>Title:</p>
+                    <div class="label"><label for="title" class="sr-only">Title</label>
+                        <input type="text" id="title" name="title" [(ngModel)]="questToCreate.title" 
+                        class="form-control" placeholder="Title" required></div>
+                        <br>
+                        <p>Question:</p>
+                    <div class="label"><label for="question" class="sr-only">Question</label>
+                        <input type="text" id="question" name="question" [(ngModel)]="questToCreate.question" 
+                        class="form-control" placeholder="Question" required></div>
+                        <br>
+                        <p>Image (link):</p>
+                    <div class="label"><label for="image" class="sr-only">Image</label>
+                        <input type="text" id="image" name="image" [(ngModel)]="questToCreate.image" 
+                        class="form-control" placeholder="Image" required></div>
+                        <br>
+                        <p>Video (YouTube link):</p>
+                    <div class="label"><label for="video" class="sr-only">Video</label>
+                        <input type="text" id="video" name="video" [(ngModel)]="questToCreate.video" 
+                        class="form-control" placeholder="Video" required></div>
+                        <br>
+                        <p>Audio (YouTube link):</p>
+                    <div class="label"><label for="audio" class="sr-only">Audio</label>
+                        <input type="text" id="audio" name="audio" [(ngModel)]="questToCreate.audio" 
+                        class="form-control" placeholder="Audio" required></div>
+                        <br>
+                        <p>Answer:</p>
+                    <div class="label"><label for="answer" class="sr-only">Answer</label>
+                        <input type="text" id="answer" name="answer" [(ngModel)]="questToCreate.answer" 
+                        class="form-control" placeholder="Answer" required></div>
+                        <br>
+                        <p>First Option:</p>
+                    <div class="label"><label for="option1" class="sr-only">First Option</label>
+                        <input type="text" id="option1" name="option1" [(ngModel)]="questToCreate.option1" 
+                        class="form-control" placeholder="First Option" required></div>
+                        <br>
+                        <p>Second Option:</p>
+                        <div class="label"><label for="option2" class="sr-only">Second Option</label>
+                            <input type="text" id="option2" name="option2" [(ngModel)]="questToCreate.option2" 
+                            class="form-control" placeholder="Second Option" required></div>
+                            <br>
+                            <p>Third Option:</p>
+                            <div class="label"><label for="option3" class="sr-only">Third Option</label>
+                                <input type="text" id="option3" name="option3" [(ngModel)]="questToCreate.option3" 
+                                class="form-control" placeholder="Third Option" required></div>
+                       <br>
+                        <p>Tips or useful links:</p>
+                    <div class="label"><label for="tipsAndLinks" class="sr-only">Tips or useful links</label>
+                        <input type="text" id="tipsAndLinks" name="tipsAndLinks" [(ngModel)]="questToCreate.tipsAndLinks" 
+                        class="form-control" placeholder="Tips or useful links" required></div>
+                        <br>
+                        <p>Availability (days)</p>
+                    <div class="label"><label for="avalability" class="sr-only">Avalability</label>
+                        <input type="number" id="avalability" name="avalability" [(ngModel)]="questToCreate.availabilityInDays" 
+                        class="form-control" placeholder="avalability" required></div>
+                      <br/>
+                      <br>
+                    <button type="submit" class="button">Create Quiz</button>
+                  </form>
+    
+            </div>
+        </div>
+        
+    </div>
+    </body>
+    <body *ngIf="categories.length==0" class="body"> 
+       <p></p>
+       <br>
+        <div class="alert alert-danger">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+            <p>You need at least 100 points in a category to create a quiz. You don't have enough points in any category to create one.</p></div>
+            <div class="alert alert-danger">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <p>To create your own quiz, it will cost you 100 points, and you will get back 10 points for every fifth attempt by other users to solve it.</p></div>
+    </body>
+    <body *ngIf="quizCreated" class="body"> 
+        <div class="container my-5">
+        <p></p>
+        <br>
+         <div class="alert alert-danger">
+             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+             <p>New Quiz Created!</p></div> <br>
+              <button class="button" (click)="reload()">Go Back</button>
+              </div>
+     </body>
+     <body *ngIf="fail" class="body"> 
+        <div class="container my-5">
+        <p></p>
+        <br>
+         <div class="alert alert-danger">
+             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+             <p>Something went wrong! Try again.</p></div> <br> 
+              <button class="button" (click)="reload()">Go Back</button>
+              </div>
+     </body>

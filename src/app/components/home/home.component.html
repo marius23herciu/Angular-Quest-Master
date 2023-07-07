@@ -1,0 +1,78 @@
+<body class="body">
+<div *ngIf="(auth.isAuthenticated$ | async); else notLoggedIn" >
+  <div class="container">
+    <hr style="height:5px;border-width:2;color:rgb(0, 0, 0);background-color:rgb(42, 35, 87)">
+    <div class="center">
+      <h2 *ngIf="startedRandomQ&&!bonusPoints" style="border-top: black; size: 1cm;">
+        You've won {{points}} points last session. <br> Try another one!
+      </h2>
+      <h2 *ngIf="startedRandomQ&&bonusPoints" style="border-top: black; size: 1cm;">
+        Congratulations! You answered all questions correct and won {{pointsBonus}} extra points!<br>You've won a total of {{points}} points last session. <br> Try another one!
+      </h2>
+    <h2 *ngIf="!startedRandomQ" style="border-top: black; size: 1cm;">
+      Welcome, {{userName}}!
+    </h2></div>
+   
+    <hr style="height:5px;border-width:2; color:rgb(0, 0, 0); background-color:rgb(42, 35, 87)">
+   
+    <body>
+      <div id = "boxes">
+          <h1>Start Random Quests. Choose Your Preference.</h1>
+           
+          <div id = "leftbox">
+              <h2>Random Quizzes:</h2>
+              <p>Get 5 random quizzes from  every category and difficulty.</p>
+              <p>You win 130 extra points if you answer correct to all 5 questions.</p>
+              <div>
+                <button class="button"  (click)="getRandomQuests()" >Start Quest</button>
+              </div>
+          </div>
+           
+          <div id = "middlebox">
+              <h2>Random Quizzes by Category:</h2>
+              <p>Get 5 random quizzes from the selected category.</p>
+              <p>You win 65 extra points for the selected category if you answer correct to all 5 questions.</p>
+              <br>
+              <p>Select Category:</p>
+              <div class="label"> <select [(ngModel)]="category"  class="form-control"  id="category" placeholder="Select category"
+                  name="categories">
+           <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+          </select></div>
+          <br>
+              <div>
+                <button class="button"  (click)="getRandomQuestsByCategory(category)" >Start Quest</button>
+              </div>
+          </div>
+           
+          <div id = "rightbox">
+              <h2>Random Quizzes by Difficulty:</h2>
+              <p>Get 5 random quizzes from the selected difficulty.</p>
+              <p>You win 130 extra points for 'Hard', 65 for 'Medium' and 26 for 'Easy', if you answer correct to all 5 questions.</p>
+              <p>Select Difficulty:</p>
+    <div class="label"> <select  [(ngModel)]="difficulty"  class="form-control"  id="difficulty" placeholder="Select difficulty"
+        name="difficulty">
+    <option *ngFor="let difficulty of difficulties" [value]="difficulty">{{difficulty}}</option>
+    </select></div>
+    <br>
+              <div >
+                <button class="button" id="bottom" (click)="getRandomQuestsByDifficulty(difficulty)" >Start Quest</button>
+              </div>
+          </div>
+      </div>
+  </body>
+
+  </div>
+  
+  </div>
+  <ng-template #notLoggedIn>
+    <div class="container">
+      <hr style="height:5px;border-width:2;color:rgb(0, 0, 0);background-color:rgb(42, 35, 87)">
+      <div class="text mat-typography"><h2 style="border-top: black; size: 1cm;">
+        Login to access Quest Master.
+      </h2></div>
+      <hr style="height:5px;border-width:2;color:rgb(0, 0, 0);background-color:rgb(42, 35, 87)">
+    </div>
+  </ng-template>
+  <br>
+  
+</body>
